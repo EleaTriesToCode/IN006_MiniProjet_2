@@ -39,3 +39,17 @@ Biblio* charger_n_entrees(char* nomfic, int n){
     return bib;
 
 }
+
+
+void enregistrer_biblio(Biblio *b, char* nomfic){
+	FILE* fichier = fopen(nomfic,"w");
+	if (fichier == NULL){
+		printf("Erreur à l'ouverture du fichier !\n");
+	}
+	Livre* livre_courant = b->L
+	while(livre_courant){
+		fprintf(fichier, "%d %s %s\n", livre_courant->num, livre_courant->titre, livre_courant->auteur);
+		livre_courant = livre_courant->suiv;
+	}
+	fclose(fichier);	
+}
