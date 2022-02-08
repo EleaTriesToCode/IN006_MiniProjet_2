@@ -1,3 +1,4 @@
+#include<unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "biblioLC.h"
@@ -15,11 +16,13 @@ Livre* creer_livre(int num, char* titre, char* auteur){
 	return nouveau;
 }
 
+
 void liberer_livre(Livre* l){
 	free(l->titre);
 	free(l->auteur);
 	free(l);
 }
+
 
 
 Biblio* creer_biblio(){
