@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<stdlib.h>
+#ifndef BIBLIOH_H
+#define BIBLIOH_H
+
+typedef struct livreh {
+    int clef ;
+    int num;
+    char* titre;
+    char* auteur;
+    struct livreh * suivant ;
+} LivreH ;
+
+typedef struct table {
+    int nE ; /*nombre d’elements contenus dans la table de hachage */
+    int m ; /*taille de la table de hachage */
+    LivreH ** T ; /*table de hachage avec resolution des collisions par chainage */
+} BiblioH ;
+
+/*Fonction retournant la clef associée à l'auteur en faisant la somme des valeurs ASCII de chaque lettre*/
+int fonctionClef(char* auteur);
+
+/*Fonction permettant de créer un livre pour la table de hachage*/
+LivreH* creer_livre(int num,char* titre,char* auteur);
+
+/*Fonction libérant l'espace mémoire alloué à l*/
+void liberer_livre(LivreH* l);
+
+/*Fonction créant une bibliothèque avec une table de taille m*/
+BiblioH* creer_biblio(int m);
+
+/*Fonction permettant de libérer la mémoire occupée par une bibliothèque.*/
+void liberer_biblio(BiblioH* b);
+
+#endif
