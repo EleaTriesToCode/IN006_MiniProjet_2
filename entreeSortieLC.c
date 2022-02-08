@@ -12,21 +12,21 @@ Biblio* charger_n_entrees(char* nomfic, int n){
     }
 
     /*Variables permettant de parcourir le fichier*/
-    char* ligne[256];
+    char ligne[256];
     int i = 0;
 
     /*Variables plus spécifiques à la structure à créer*/
 
     int num;
-    char* titre[100];
-    char* auteur[100];
+    char titre[100];
+    char auteur[100];
 
     Biblio* bib = creer_biblio();
 
     /*On parcourt le fichier*/
 
     while ( (fgets(ligne,256,f))  && (i<n) ){
-        if(sscanf("%d %s %s",&num,&titre,&auteur)==3){
+        if(sscanf(ligne,"%d %s %s",&num,titre,auteur)==3){
             inserer_en_tete(bib,num,titre,auteur);
         }
         else{
@@ -46,8 +46,8 @@ void enregistrer_biblio(Biblio *b, char* nomfic){
 	if (fichier == NULL){
 		printf("Erreur à l'ouverture du fichier !\n");
 	}
-	Livre* livre_courant = b->L
-	while(livre_courant){
+	Livre* livre_courant = b->L;
+	while (livre_courant){
 		fprintf(fichier, "%d %s %s\n", livre_courant->num, livre_courant->titre, livre_courant->auteur);
 		livre_courant = livre_courant->suiv;
 	}
