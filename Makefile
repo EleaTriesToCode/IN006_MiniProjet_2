@@ -10,7 +10,7 @@ biblioLC.o : biblioLC.c biblioLC.h
 	gcc -c biblioLC.c
 
 entreeSortieLC.o : entreeSortieLC.c entreeSortieLC.h biblioLC.h
-	gcc -c entreeSortieLC
+	gcc -c entreeSortieLC.c
 
 
 clean :
