@@ -18,6 +18,9 @@ Livre* creer_livre(int num, char* titre, char* auteur);
 /*Fonction permettant de libérer la place allouée en mémoire au Livre l*/
 void liberer_livre(Livre* l);
 
+/*Fonction permettant de dupliquer un livre passé en paramètres*/
+Livre*dupliquer_livre(Livre* l);
+
 /*Créé une bibliothèque en initialisant son champ livre à null*/
 Biblio* creer_biblio();
 
