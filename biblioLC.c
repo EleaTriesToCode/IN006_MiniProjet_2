@@ -21,6 +21,13 @@ void liberer_livre(Livre* l){
 	free(l);
 }
 
+Livre*dupliquer_livre(Livre* l){
+	char* titre = strdup(l->titre);
+	char* auteur = strdup(l->auteur);
+	Livre* res = creer_livre(l->num,titre,auteur);
+}
+
+
 Biblio* creer_biblio(){
 	Biblio* nouvelle_biblio = (Biblio*)(malloc(sizeof(Biblio)));
 	if (nouvelle_biblio == NULL){
