@@ -12,6 +12,15 @@ void afficher_livre(Livre* livre){
 
 /*E l’affichage d’une bibliothèque.*/
 
+void afficher_biblio(Biblio* bib){
+    Livre* livre_courant = bib->L;
+    while (livre_courant){
+        afficher_livre(livre_courant);
+        printf("\n");
+        livre_courant = livre_courant->suiv;
+    }
+}
+
 /*D la recherche d’un ouvrage par son numéro.*/
 
 Livre* recherche_num(Biblio*bib, int n){
@@ -24,6 +33,14 @@ Livre* recherche_num(Biblio*bib, int n){
 }
 
 /*E la recherche d’un ouvrage par son titre.*/
+
+Livre* recherche_titre(Biblio* bib, char* titre){
+    Livre* livre_courant = bib->L;
+    while ( (livre_courant) && (strcmp(livre_courant->titre,titre) != 0)){
+        livre_courant = livre_courant->suiv;
+    }
+    return livre_courant;
+}
 
 /*D la recherche de tous les livres d’un même auteur (retourne une bibliothèque).*/
 
@@ -43,6 +60,30 @@ Biblio* recherche_auteur(Biblio* bib,char* auteur){
 }
 
 /*E la suppression d’un ouvrage (à partir de son numéro, son auteur et son titre).*/
+
+void supprimer_livre(Biblio** bib, int num, char* auteur, char* titre){
+    Livre* l_courant;
+    Livre* l_prec;
+    if ((*bib != NULL) && ((*bib)->L != NULL)){
+        l_courant = (*bib)->L;
+        if ( (l_courant->num == num) && (strcmp(l_courant->titre,titre)==0) && (strcmp(l_courant->auteur,auteur)==0) ){
+            Livre* tmp = l_courant->suiv;
+            liberer_livre(l_courant);
+            l_courant = tmp;
+        }else{
+            l_prec = l_courant;
+            l_courant = l_courant->suiv;
+            while ((l_courant) && !((l_courant->num == num) && (strcmp(l_courant->titre,titre)==0) && (strcmp(l_courant->auteur,auteur)==0) )){
+                l_prec = l_courant;
+                l_courant = l_courant->suiv;
+            }
+            if (l_courant){
+                l_prec->suiv = l_courant->suiv;
+                liberer_livre(l_courant);
+            }
+        }
+    }
+}
 
 /*D la fusion de deux bibliothèques en ajoutant la deuxième bibliothèque à la première, et en
 supprimant la deuxième.*/
