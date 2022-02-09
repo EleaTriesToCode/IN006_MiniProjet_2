@@ -56,7 +56,7 @@ Biblio* recherche_auteur(Biblio* bib,char* auteur){
         }
         l_courant = l_courant->suiv;
     }
-    return bib_auteur    
+    return bib_auteur; 
 }
 
 /*E la suppression d’un ouvrage (à partir de son numéro, son auteur et son titre).*/
