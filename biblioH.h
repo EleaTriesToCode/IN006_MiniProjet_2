@@ -32,4 +32,11 @@ BiblioH* creer_biblio(int m);
 /*Fonction permettant de libérer la mémoire occupée par une bibliothèque.*/
 void liberer_biblio(BiblioH* b);
 
+/*Fonction permettant d'obtenir la clé hachée d'un livre à partir de sa clé*/
+int fonctionHachage(int cle, int m);
+
+/*Fonction permettant d'ajouter un livre à la bibliothèque*/
+void inserer(BiblioH* b, int num, char* titre, char* auteur);
+
+
 #endif
