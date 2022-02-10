@@ -50,3 +50,14 @@ void inserer_en_tete(Biblio* b, int num, char* titre, char* auteur){
 	nouveau->suiv = b->L;
 	b->L = nouveau;
 }
+
+Livre* dupliquer (Livre* l){
+	char* titre = strdup(l->auteur);
+    char* auteur = strdup(l->auteur);
+    Livre* l_copie = (Livre*)malloc(sizeof(Livre));
+	l_copie->auteur = auteur;
+	l_copie->titre = titre;
+	l_copie->num = l->num;
+	l_copie ->suiv = NULL;
+	return l_copie;
+}
