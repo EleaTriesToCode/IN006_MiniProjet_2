@@ -3,6 +3,7 @@
 #ifndef BIBLIOH_H
 #define BIBLIOH_H
 
+/* Type def d'une structure de livre avec une table de hachage */
 typedef struct livreh {
     int clef ;
     int num;
