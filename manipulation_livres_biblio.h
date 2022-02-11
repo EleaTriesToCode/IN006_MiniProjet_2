@@ -26,6 +26,9 @@ void supprimer_livre(Biblio** bib, int num, char* auteur, char* titre);
 /*Fonction faisant la fusion de deux Biblio dans bib1 (modifiée par effet de bord) et libérant bib2*/
 void fusion_bib(Biblio* bib1, Biblio* bib2);
 
+/*Fonction retournant si l2 est un doublon de l1 (sert de manière annexe dans recherche_pls_exemplaires)*/
+int est_doublon(Livre* l1, Livre*l2);
+
 /*Fonction donnant une liste des livres présents en plusieurs exemplaires dans la bibliothèque bib*/
 Livre* recherche_pls_exemplaires(Biblio* bib);
 
