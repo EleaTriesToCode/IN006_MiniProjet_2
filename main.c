@@ -17,6 +17,7 @@ void menu(){
 	printf("8 - Recherche des livres présents en plusieurs exemplaires dans la bibliothèque\n");
 }
 
+/* Entry point */
 int main(int argc, char** argv){
 	/*Récupération des données passées en ligne de commande*/
 	if (argc != 3){
