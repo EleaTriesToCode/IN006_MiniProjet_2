@@ -103,3 +103,32 @@ void fusion_bib(Biblio* bib1, Biblio* bib2){
 ont le même auteur et le même titre (seul le numéro change). Cette fonction devra renvoyer
 une liste comprenant tous les exemplaires de ces ouvrages, avec une complexité-temps pire cas
 en O(n 2 ) où n est la taille de la bibliothèque.*/
+
+int est_doublon(Livre* l1, Livre*l2){
+    return ((l1->auteur == l2->auteur)&&(l1->titre==l2->titre)&&(l1->num != l2->num));
+}
+
+Livre* recherche_pls_exemplaires(Biblio* bib){
+    Livre* res = NULL;
+    Livre* nouvelle_tete;
+
+    Livre* courant_1 = bib->L;
+    Livre* courant_2;
+
+    while (courant_1){
+        courant_2 = bib->L;
+        while(courant_2){
+            if(est_doublon(courant_1,courant_2)){
+                nouvelle_tete = dupliquer(courant_1);
+                nouvelle_tete->suiv = res;
+                res = nouvelle_tete;
+                break;
+            }
+            courant_2 = courant_2->suiv;
+        }
+        courant_1 = courant_1->suiv;
+    }
+        
+    return res; 
+}
+
