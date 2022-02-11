@@ -113,6 +113,7 @@ int main(int argc, char** argv){
 					printf ("Erreur formatage\n");
 				}
 			}
+			liberer_biblio(b);
 			break ;
 		case 6 :;
 			printf("Suppression d'un livre de la bibliothèque :\n");
@@ -151,6 +152,7 @@ int main(int argc, char** argv){
 			}else{
 				printf("Aucun doublon présent.");
 			}
+			liberer_biblio(res);
 			break;					
 		}	
 	}while (rep != 0);
