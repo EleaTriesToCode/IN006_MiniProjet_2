@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
-#include"manipulation_livres_biblio.h"
-#include"biblioLC.h"
+#include"manipulation_livres_biblioH.h"
+#include"biblioH.h"
 
 
 /*D l’affichage d’un livre.*/
@@ -26,7 +26,7 @@ void afficher_biblio(BiblioH* bib){
 
 /*D la recherche d’un ouvrage par son numéro.*/
 
-LivreH* recherche_num(Biblio*bib, int n){
+LivreH* recherche_num(BiblioH* bib, int n){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
     for (int i = 0; i<bib->nE; i++){
@@ -41,7 +41,7 @@ LivreH* recherche_num(Biblio*bib, int n){
 }
 
 /*E la recherche d’un ouvrage par son titre.*/
-LivreH* recherche_titre(Biblio* bib, char* titre){
+LivreH* recherche_titre(BiblioH* bib, char* titre){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
     for (int i = 0; i<bib->nE; i++){
@@ -88,7 +88,7 @@ ont le même auteur et le même titre (seul le numéro change). Cette fonction d
 une liste comprenant tous les exemplaires de ces ouvrages, avec une complexité-temps pire cas
 en O(n^2) où n est la taille de la bibliothèque.*/
 
-Livre* recherche_pls_exemplaires(BiblioH* bib){
+LivreH* recherche_pls_exemplaires(BiblioH* bib){
     
 
 }
