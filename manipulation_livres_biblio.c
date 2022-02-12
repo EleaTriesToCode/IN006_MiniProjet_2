@@ -51,9 +51,7 @@ Biblio* recherche_auteur(Biblio* bib,char* auteur){
     Livre* l_auteur;
     while (l_courant){
         if(strcmp(l_courant->auteur,auteur)){
-            char* titre = strdup(l_courant->auteur);
-            char* auteur = strdup(l_courant->auteur);
-            inserer_en_tete(bib_auteur,l_courant->num,titre,auteur);
+            inserer_en_tete(bib_auteur,l_courant->num,l_courant->titre,l_courant->auteur);
         }
         l_courant = l_courant->suiv;
     }
