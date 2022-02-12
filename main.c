@@ -30,9 +30,6 @@ int main(int argc, char** argv){
 	}
 	int nb_lignes = atoi(argv[2]);
 
-	/*Création d'une bibliothèque*/
-	Biblio* biblio = creer_biblio();
-
 	/*Chargement selon ligne de commande*/
 	biblio = charger_n_entrees(nom_fichier,nb_lignes);
 	
