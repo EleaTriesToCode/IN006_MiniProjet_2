@@ -1,18 +1,3 @@
 Questions pour le TME 3 
 
-
-Exercice 1 Q6 ouvrages de tous les auteurs : 
-est-ce un problème de dupliquer les livres ? faut-il les retirer de la grande bibliothèque ?
--> fonction de suppression d'un livre : 
-une si on donne que l'auteur, une si on donne que le titre, une si on donne que le numero ? ou une avec les 3 infos dont 2 inutiles? 
-Pas d'utilisation des fonctions de recherche car besoin du précédent... bonne idée? 
-Attention supprime que premier exemplaire rencontré... grave? 
-
-Exercice 1 Q5
-
-Lignes de Commande
-
-
-Exercice 2
-
-Fonctionnement de la table de hâchage : tableau à m cases ou pointeur sur pointeur sur liste chaînée ?
+Le floor de fonction de hachage n'est pas defined alors qu'on a inclu math? 
