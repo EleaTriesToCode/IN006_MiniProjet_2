@@ -15,5 +15,21 @@ entreeSortieLC.o : entreeSortieLC.c entreeSortieLC.h biblioLC.h
 manipulation_livres_biblio.o : biblioLC.c biblioLC.h manipulation_livres_biblio.h
 	gcc -c manipulation_livres_biblio.c
 
+mainH : mainH.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
+	gcc -o mainH mainH.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
+
+mainH.o : mainH.c biblioH.h entreeSortieH.h manipulation_livres_biblioH.h
+	gcc -c mainH.c
+
+biblioH.o : biblioH.c biblioH.h 
+	gcc -c biblioH.c
+
+entreeSortieH.o : entreeSortieH.c entreeSortieH.h biblioH.h
+	gcc -c entreeSortieH.c
+
+manipulation_livres_biblioH.o : biblioH.c biblioH.h manipulation_livres_biblioH.h
+	gcc -c manipulation_livres_biblioH.c
+
+
 clean :
 	rm -f *.o main
