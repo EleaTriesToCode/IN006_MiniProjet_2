@@ -105,7 +105,7 @@ une liste comprenant tous les exemplaires de ces ouvrages, avec une complexité-
 en O(n 2 ) où n est la taille de la bibliothèque.*/
 
 int est_doublon(Livre* l1, Livre*l2){
-    return ((l1->auteur == l2->auteur)&&(l1->titre==l2->titre)&&(l1->num != l2->num));
+    return ((strcmp(l1->auteur,l2->auteur)==0)&&(strcmp(l1->titre,l2->titre)==0)&&(l1->num != l2->num));
 }
 
 Livre* recherche_pls_exemplaires(Biblio* bib){
