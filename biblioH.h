@@ -39,5 +39,4 @@ int fonctionHachageH(int cle, int m);
 /*Fonction permettant d'ajouter un livre à la bibliothèque*/
 void insererH(BiblioH* b, int num, char* titre, char* auteur);
 
-
 #endif

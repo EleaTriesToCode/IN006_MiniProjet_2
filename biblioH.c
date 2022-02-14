@@ -69,3 +69,4 @@ void insererH(BiblioH* b, int num, char* titre, char* auteur){
     livre->suivant = liste_clefH;
     (b->T)[pos] = livre;
 }
+

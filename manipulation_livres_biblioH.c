@@ -134,7 +134,7 @@ void fusion_bibH(BiblioH* bib1, BiblioH* bib2){
         suite = courant->suivant;
             courant->suivant = table_a_remplir[cle_remplissage];
             table_a_remplir[cle_remplissage]= courant;
-            courant = suite;                
+            courant = suite;
         }
     }
     free(table_a_parcourir);
@@ -146,7 +146,30 @@ ont le même auteur et le même titre (seul le numéro change). Cette fonction d
 une liste comprenant tous les exemplaires de ces ouvrages, avec une complexité-temps pire cas
 en O(n^2) où n est la taille de la bibliothèque.*/
 
-LivreH* recherche_pls_exemplairesH(BiblioH* bib){
-    
+int est_doublonH(LivreH* l1, LivreH* l2){
+    return ((strcmp(l1->auteur,l2->auteur)==0)&&(strcmp(l1->titre,l2->titre)==0)&&(l1->num != l2->num));
+}
 
+
+LivreH* recherche_pls_exemplairesH(BiblioH* bib){
+    int i;
+    LivreH* res = NULL;
+    LivreH* courant;
+    LivreH* doublon_potentiel;
+    LivreH* ajout;
+
+    for(i = 0 ; i < bib->m ; i++){
+        courant = (bib->T)[i];
+        doublon_potentiel = courant->suivant;
+        while(doublon_potentiel){
+
+            if(est_doublonH(courant,doublon_potentiel)){
+                ajout = creer_livreH(doublon_potentiel->num,doublon_potentiel->titre,doublon_potentiel->auteur);
+                ajout->suivant = res;
+                res = ajout;
+            }
+            doublon_potentiel = doublon_potentiel -> suivant;
+        }
+    }
+    return res;  
 }
