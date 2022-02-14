@@ -120,7 +120,25 @@ int est_doublonH(LivreH* l1, LivreH* l2){
 supprimant la deuxième.*/
 
 void fusion_bibH(BiblioH* bib1, BiblioH* bib2){
-    
+    int i;
+
+    LivreH** table_a_parcourir = bib2->T;
+    LivreH** table_a_remplir = bib1->T;
+    LivreH* courant;
+    LivreH* suite;
+
+     for(i = 0 ; i < bib2->m ; i++){
+        courant = table_a_parcourir[i];
+        int cle_remplissage = fonctionHachage(i,bib1->m);
+        while(courant){
+        suite = courant->suivant;
+            courant->suivant = table_a_remplir[cle_remplissage];
+            table_a_remplir[cle_remplissage]= courant;
+            courant = suite;                
+        }
+    }
+    free(table_a_parcourir);
+    free(bib2);
 }
 
 /*E + D ? la recherche de tous les ouvrages avec plusieurs exemplaires. Deux ouvrages sont identiques s’ils
