@@ -70,10 +70,50 @@ BiblioH* recherche_auteurH(BiblioH* bib,char* auteur){
     return res;
 }
 
+
+
 /*E la suppression d’un ouvrage (à partir de son numéro, son auteur et son titre).*/
-void supprimer_livreH(BiblioH** bib, int num, char* auteur, char* titre){
+void supprimer_livreH(BiblioH* bib, int num, char* auteur, char* titre){
+
+    /*On récupère la position du livre dans la table*/
+    int clef = fonctionHachage(fonctionClef(auteur), bib->m);
+
+    /*On récupère la liste où se trouve le livre à supprimer*/
+    LivreH* courant = (bib->T)[clef];
+    LivreH* prec;
+
+    /*Si le premier de la liste est celui qu'on veut supprimer, on modifie directement la tête de la liste*/
+
+    if( (courant->num==num) && (strcmp(courant->auteur,auteur)==0) && (strcmp(courant->titre,titre)==0) ){
+        (bib->T)[clef]=courant->suivant;
+        free(courant);
+    }
+    else{
+        /*Sinon, on peut passer ce premier élément et rentrer dans notre boucle*/
+        prec = courant;
+        courant = courant->suivant;
+        int pas_trouve = 1;
+        while ( (courant) && (pas_trouve) ){
+            if((courant->num==num) && (strcmp(courant->auteur,auteur)==0) && (strcmp(courant->titre,titre)==0) ){
+                prec->suivant = courant->suivant;
+                pas_trouve = 0;
+                free(courant);
+            }
+            courant = courant->suivant;
+        }
+
+        if(pas_trouve){
+            printf("Erreur, livre à supprimer non présent dans la bibliothèque\n");
+        }
+                
+    }
+
     
 
+}
+
+int est_doublonH(LivreH* l1, LivreH* l2){
+    return ((strcmp(l1->auteur,l2->auteur)==0)&&(strcmp(l1->titre,l2->titre)==0)&&(l1->num != l2->num));
 }
 
 /*D la fusion de deux bibliothèques en ajoutant la deuxième bibliothèque à la première, et en
