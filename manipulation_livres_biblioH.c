@@ -7,12 +7,12 @@
 
 /*D l’affichage d’un livre.*/
 
-void afficher_livre(LivreH* livre){
+void afficher_livreH(LivreH* livre){
     printf("clef = %d / %d : %s de %s\n",livre->clef,livre->num,livre->titre,livre->auteur);
 }
 
 /*E l’affichage d’une bibliothèque.*/
-void afficher_biblio(BiblioH* bib){
+void afficher_biblioH(BiblioH* bib){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
     for (int i = 0; i<bib->nE; i++){
@@ -26,7 +26,7 @@ void afficher_biblio(BiblioH* bib){
 
 /*D la recherche d’un ouvrage par son numéro.*/
 
-LivreH* recherche_num(BiblioH* bib, int n){
+LivreH* recherche_numH(BiblioH* bib, int n){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
     for (int i = 0; i<bib->nE; i++){
@@ -41,7 +41,7 @@ LivreH* recherche_num(BiblioH* bib, int n){
 }
 
 /*E la recherche d’un ouvrage par son titre.*/
-LivreH* recherche_titre(BiblioH* bib, char* titre){
+LivreH* recherche_titreH(BiblioH* bib, char* titre){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
     for (int i = 0; i<bib->nE; i++){
@@ -57,7 +57,7 @@ LivreH* recherche_titre(BiblioH* bib, char* titre){
 
 /*D la recherche de tous les livres d’un même auteur (retourne une bibliothèque).*/
 
-BiblioH* recherche_auteur(BiblioH* bib,char* auteur){
+BiblioH* recherche_auteurH(BiblioH* bib,char* auteur){
     BiblioH* res = creer_biblio(bib->m);
     int ou_chercher = fonctionHachage(fonctionClef(auteur),bib->m);
     LivreH* liste_auteur = (bib->T)[ou_chercher];
@@ -71,7 +71,7 @@ BiblioH* recherche_auteur(BiblioH* bib,char* auteur){
 }
 
 /*E la suppression d’un ouvrage (à partir de son numéro, son auteur et son titre).*/
-void supprimer_livre(BiblioH** bib, int num, char* auteur, char* titre){
+void supprimer_livreH(BiblioH** bib, int num, char* auteur, char* titre){
     
 
 }
@@ -79,7 +79,7 @@ void supprimer_livre(BiblioH** bib, int num, char* auteur, char* titre){
 /*D la fusion de deux bibliothèques en ajoutant la deuxième bibliothèque à la première, et en
 supprimant la deuxième.*/
 
-void fusion_bib(BiblioH* bib1, BiblioH* bib2){
+void fusion_bibH(BiblioH* bib1, BiblioH* bib2){
     
 }
 
@@ -88,7 +88,7 @@ ont le même auteur et le même titre (seul le numéro change). Cette fonction d
 une liste comprenant tous les exemplaires de ces ouvrages, avec une complexité-temps pire cas
 en O(n^2) où n est la taille de la bibliothèque.*/
 
-LivreH* recherche_pls_exemplaires(BiblioH* bib){
+LivreH* recherche_pls_exemplairesH(BiblioH* bib){
     
 
 }
