@@ -31,7 +31,7 @@ int main(int argc, char** argv){
 	int nb_lignes = atoi(argv[2]);
 
 	/*Chargement selon ligne de commande*/
-	biblio = charger_n_entrees(nom_fichier,nb_lignes);
+	Biblio* biblio = charger_n_entrees(nom_fichier,nb_lignes);
 	
 	/*Actions sur la bibliothèque selon le choix de l'utilisateur*/
 	int rep;
@@ -107,11 +107,12 @@ int main(int argc, char** argv){
 					}else{
 						printf("Auteur introuvable.\n");
 					}
+					liberer_biblio(b);
 				}else{
 					printf ("Erreur formatage\n");
 				}
 			}
-			liberer_biblio(b);
+			
 			break ;
 		case 6 :;
 			printf("Suppression d'un livre de la bibliothèque :\n");
