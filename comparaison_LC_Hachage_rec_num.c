@@ -19,7 +19,9 @@
 int main(){
 	/*Créations des bibliothèques où chercher*/
 	Biblio* bibLC = charger_n_entrees("GdeBiblio.txt",TAILLE);
-	BiblioH* bibH = charger_n_entrees("GdeBiblio.txt",TAILLE,M);
+	BiblioH* bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,M);
+
+	afficher_biblioH(bibH);
 
 	/*Ouverture du fichier contenant les livres à chercher*/
 	FILE* fichier_bib = fopen("GdeBiblio.txt","r");
@@ -94,12 +96,12 @@ int main(){
         /*Recherche selon titre*/
 		/*Avec LC*/
 		temps_initial = clock();
-		recherche_titre(bibLC, numero);
+		recherche_titre(bibLC, titre);
 		temps_final = clock();
 		temps_LC = ((double)(temps_final - temps_initial))/CLOCKS_PER_SEC;
 		/*Avec H*/
 		temps_initial = clock();
-		recherche_titreH(bibH, numero);
+		recherche_titreH(bibH, titre);
 		temps_final = clock();
 		temps_H = ((double)(temps_final - temps_initial))/CLOCKS_PER_SEC;
 		/*Ecriture dans le fichier approprié*/

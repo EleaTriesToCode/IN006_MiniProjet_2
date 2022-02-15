@@ -38,6 +38,9 @@ BiblioH* creer_biblioH(int m){
     res->nE = 0;
     res->m = m;
     res->T = (LivreH**)(malloc(m*sizeof(LivreH*)));
+    for(int i = 0 ; i < m ; i++){
+        (res->T)[i] = NULL;
+    }
     return res;
 }
 

@@ -1,7 +1,7 @@
-all : main mainH 
+all : main mainH comparaison_LC_Hachage_rec_num 
 
-comparaison_rec_num : comparaison_LC_Hachage_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
-	gcc - o comparaison_rec_num comparaison_LC_Hachage_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
+comparaison_LC_Hachage_rec_num : comparaison_LC_Hachage_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
+	gcc -o comparaison_LC_Hachage_rec_num comparaison_LC_Hachage_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o -lm
 
 comparaison_LC_Hachage_rec_num.o : comparaison_LC_Hachage_rec_num.c biblioLC.h entreeSortieLC.h manipulation_livres_biblio.h biblioH.h entreeSortieH.h manipulation_livres_biblioH.h
 	gcc -c comparaison_LC_Hachage_rec_num.c

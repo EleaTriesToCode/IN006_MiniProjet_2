@@ -15,9 +15,9 @@ void afficher_livreH(LivreH* livre){
 void afficher_biblioH(BiblioH* bib){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
-    for (int i = 0; i<bib->nE; i++){
+    for (int i = 0; i<bib->m; i++){
         liste_courante = tableauH[i];
-        while (liste_courante){
+        while(liste_courante){
             afficher_livreH(liste_courante);
             liste_courante = liste_courante->suivant;
         }
