@@ -49,21 +49,21 @@ void liberer_biblioH(BiblioH* b){
         liste_courante = tableauH[i];
         while (liste_courante){
             tmp = liste_courante->suivant;
-            liberer_livre(liste_courante);
+            liberer_livreH(liste_courante);
             liste_courante = tmp;
         }
     } free(tableauH);
     free(b);
 }
 
-int fonctionHachageH(int clef, int m){
+int fonctionHachage(int clef, int m){
     float a = (sqrt(5)-1)/2;
     float ka = clef*a;
     return floor(m*(ka-floor(ka)));
 }
 
 void insererH(BiblioH* b, int num, char* titre, char* auteur){
-    LivreH* livre = creer_livre(num,titre,auteur);
+    LivreH* livre = creer_livreH(num,titre,auteur);
     int pos = fonctionHachage(livre->clef, b->m);
     LivreH* liste_clefH = (b->T)[pos];
     livre->suivant = liste_clefH;

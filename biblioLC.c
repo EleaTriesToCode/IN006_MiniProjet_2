@@ -1,6 +1,7 @@
 #include<unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "biblioLC.h"
 
 Livre* creer_livre(int num, char* titre, char* auteur){

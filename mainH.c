@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "biblioH.h"
 #include "entreeSortieH.h"
 #include "manipulation_livres_biblioH.h"
@@ -32,7 +33,7 @@ int main(int argc, char** argv){
 	int nb_lignes = atoi(argv[2]);
 
 	/*Chargement selon ligne de commande*/
-	BiblioH* biblio = charger_n_entrees(nom_fichier,nb_lignes,M);
+	BiblioH* biblio = charger_n_entreesH(nom_fichier,nb_lignes,M);
 	
 	/*Actions sur la bibliothèque selon le choix de l'utilisateur*/
 	int rep;
@@ -49,13 +50,13 @@ int main(int argc, char** argv){
 		switch(rep){
 		case 1 :;
 			printf("Affichage de la bibliothèque :\n");
-			afficher_biblio(biblio);
+			afficher_biblioH(biblio);
 			break;
 		case 2 :; 
 			printf ("Saisissez le numéro, le titre et l'auteur de l'ouvrage :\n");
 			if (fgets(entree,256,stdin)) {
 				if (sscanf(entree, "%d %s %s\n",&num, titre, auteur) == 3){
-					inserer(biblio, num, titre, auteur);
+					insererH(biblio, num, titre, auteur);
 					printf ("Ajout fait\n");
 				} else {
 				printf ("Erreur formatage\n");
@@ -67,10 +68,10 @@ int main(int argc, char** argv){
 			printf ("Saisissez le numéro recherché :\n");
 			if (fgets(entree,10,stdin)) {
 				if (sscanf(entree, "%d\n",&num) == 1){
-					LivreH* l = recherche_num(biblio,num);
+					LivreH* l = recherche_numH(biblio,num);
 					if (l){
 						printf("Livre recherché :\n");
-						afficher_livre(l);
+						afficher_livreH(l);
 					}else{
 						printf("Livre introuvable.\n");
 					}
@@ -84,10 +85,10 @@ int main(int argc, char** argv){
 			printf ("Saisissez le titre recherché :\n");
 			if (fgets(entree,256,stdin)) {
 				if (sscanf(entree, "%s\n",titre) == 1){
-					LivreH* l = recherche_titre(biblio,titre);
+					LivreH* l = recherche_titreH(biblio,titre);
 					if (l){
 						printf("Livre recherché :\n");
-						afficher_livre(l);
+						afficher_livreH(l);
 					}else{
 						printf("Livre introuvable.\n");
 					}
@@ -101,12 +102,12 @@ int main(int argc, char** argv){
 			printf ("Saisissez l'auteur désiré :\n");;
 			if (fgets(entree,256,stdin)) {
 				if (sscanf(entree, "%s\n",auteur) == 1){
-					BiblioH* b = recherche_auteur(biblio,auteur);
+					BiblioH* b = recherche_auteurH(biblio,auteur);
 					if (b){
 						printf("Livres de l'auteur recherché :\n");
-						afficher_biblio(b);
+						afficher_biblioH(b);
 						/*on peut la libérer direct!!*/
-						liberer_biblio(b);
+						liberer_biblioH(b);
 					}else{
 						printf("Auteur introuvable.\n");
 					}
@@ -120,7 +121,7 @@ int main(int argc, char** argv){
 			printf ("Saisissez le numéro, le titre et l'auteur de l'ouvrage que vous voulez supprimer :\n");
 			if (fgets(entree,256,stdin)) {
 				if (sscanf(entree, "%d %s %s\n",&num, titre, auteur) == 3){
-					supprimer_livre(&biblio, num, auteur, titre);
+					supprimer_livreH(biblio, num, auteur, titre);
 					printf ("Suppression faite\n");
 				} else {
 				printf ("Erreur formatage\n");
@@ -135,8 +136,8 @@ int main(int argc, char** argv){
 			char entree[256];
 			if (fgets(entree,256,stdin)) {
 				if (sscanf(entree, "%s %d\n",nom_fichier_2, &nb_entrees) == 2){
-					BiblioH* bib2 = charger_n_entrees(nom_fichier_2,nb_entrees,M);
-					fusion_bib(biblio, bib2);
+					BiblioH* bib2 = charger_n_entreesH(nom_fichier_2,nb_entrees,M);
+					fusion_bibH(biblio, bib2);
 					printf ("Fusion faite\n");
 				} else {
 				printf ("Erreur formatage\n");
@@ -145,11 +146,11 @@ int main(int argc, char** argv){
 			break ;
 		case 8 :; 
 			printf("Recherche des livres présents en plusieurs exemplaires :\n");
-			BiblioH* res = creer_biblio(M);
-			(res->T)[0] = recherche_pls_exemplaires(biblio);
+			BiblioH* res = creer_biblioH(M);
+			(res->T)[0] = recherche_pls_exemplairesH(biblio);
 			if (res->T){
-				afficher_biblio(res);
-				liberer_biblio(res);
+				afficher_biblioH(res);
+				liberer_biblioH(res);
 			}else{
 				printf("Aucun doublon présent.");
 			}
@@ -159,7 +160,7 @@ int main(int argc, char** argv){
 	printf("Merci et au revoir!\n");
 
 	/*Libération mémoire*/
-	liberer_biblio(biblio);
+	liberer_biblioH(biblio);
 
 	return 0;
 }

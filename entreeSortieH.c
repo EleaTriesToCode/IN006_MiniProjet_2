@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include "biblioH.h"
 
-BiblioH* charger_n_entrees(char* nomfic, int n, int m){
+BiblioH* charger_n_entreesH(char* nomfic, int n, int m){
 	FILE* f = fopen(nomfic,"r");
 
     if (f == NULL){
@@ -20,13 +20,13 @@ BiblioH* charger_n_entrees(char* nomfic, int n, int m){
     char titre[100];
     char auteur[100];
 
-    BiblioH* bibH = creer_biblio(m);
+    BiblioH* bibH = creer_biblioH(m);
 
     /*On parcourt le fichier*/
 
     while ( (fgets(ligne,256,f))  && (i<n) ){
         if(sscanf(ligne,"%d %s %s",&num,titre,auteur)==3){
-            inserer(bibH, num, titre, auteur);
+            insererH(bibH, num, titre, auteur);
         }
         else{
             printf("Erreur de formatage du fichier à la ligne %d!\n",i);        //On a choisi de continuer à lire le fichier en cas de fautes de frappe
@@ -40,7 +40,7 @@ BiblioH* charger_n_entrees(char* nomfic, int n, int m){
 
 
 
-void enregistrer_biblio(BiblioH *bH, char* nomfic){
+void enregistrer_biblioH(BiblioH *bH, char* nomfic){
 	FILE* fichier = fopen(nomfic,"w");
 	if (fichier == NULL){
 		printf("Erreur à l'ouverture du fichier !\n");

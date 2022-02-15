@@ -18,7 +18,7 @@ void afficher_biblioH(BiblioH* bib){
     for (int i = 0; i<bib->nE; i++){
         liste_courante = tableauH[i];
         while (liste_courante){
-            afficher_livre(liste_courante);
+            afficher_livreH(liste_courante);
             liste_courante = liste_courante->suivant;
         }
     }
@@ -58,12 +58,12 @@ LivreH* recherche_titreH(BiblioH* bib, char* titre){
 /*D la recherche de tous les livres d’un même auteur (retourne une bibliothèque).*/
 
 BiblioH* recherche_auteurH(BiblioH* bib,char* auteur){
-    BiblioH* res = creer_biblio(bib->m);
+    BiblioH* res = creer_biblioH(bib->m);
     int ou_chercher = fonctionHachage(fonctionClef(auteur),bib->m);
     LivreH* liste_auteur = (bib->T)[ou_chercher];
     while (liste_auteur){
         if (strcmp(liste_auteur->auteur,auteur)==0){
-            inserer(res, liste_auteur->num, liste_auteur->titre, liste_auteur->auteur); 
+            insererH(res, liste_auteur->num, liste_auteur->titre, liste_auteur->auteur); 
         }
         liste_auteur = liste_auteur->suivant;
     }
@@ -112,9 +112,7 @@ void supprimer_livreH(BiblioH* bib, int num, char* auteur, char* titre){
 
 }
 
-int est_doublonH(LivreH* l1, LivreH* l2){
-    return ((strcmp(l1->auteur,l2->auteur)==0)&&(strcmp(l1->titre,l2->titre)==0)&&(l1->num != l2->num));
-}
+
 
 /*D la fusion de deux bibliothèques en ajoutant la deuxième bibliothèque à la première, et en
 supprimant la deuxième.*/

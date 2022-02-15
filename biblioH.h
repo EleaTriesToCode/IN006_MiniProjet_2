@@ -34,7 +34,7 @@ BiblioH* creer_biblioH(int m);
 void liberer_biblioH(BiblioH* b);
 
 /*Fonction permettant d'obtenir la clé hachée d'un livre à partir de sa clé et de la taille m de la table*/
-int fonctionHachageH(int cle, int m);
+int fonctionHachage(int cle, int m);
 
 /*Fonction permettant d'ajouter un livre à la bibliothèque*/
 void insererH(BiblioH* b, int num, char* titre, char* auteur);
