@@ -29,22 +29,24 @@ void afficher_biblioH(BiblioH* bib){
 LivreH* recherche_numH(BiblioH* bib, int n){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
-    for (int i = 0; i<bib->nE; i++){
+    for (int i = 0; i<bib->m; i++){
         liste_courante = tableauH[i];
         while (liste_courante){
             if (liste_courante->num == n){
                 return liste_courante;
             }
             liste_courante = liste_courante->suivant;
+            printf("passage\n");
         }
     }
+    return NULL;
 }
 
 /*E la recherche d’un ouvrage par son titre.*/
 LivreH* recherche_titreH(BiblioH* bib, char* titre){
     LivreH** tableauH = bib->T;
     LivreH* liste_courante;
-    for (int i = 0; i<bib->nE; i++){
+    for (int i = 0; i<bib->m; i++){
         liste_courante = tableauH[i];
         while (liste_courante){
             if (strcmp(liste_courante->titre,titre) == 0){
@@ -53,6 +55,7 @@ LivreH* recherche_titreH(BiblioH* bib, char* titre){
             liste_courante = liste_courante->suivant;
         }
     }
+    return NULL;
 }
 
 /*D la recherche de tous les livres d’un même auteur (retourne une bibliothèque).*/
