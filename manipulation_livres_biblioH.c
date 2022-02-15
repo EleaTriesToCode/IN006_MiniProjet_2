@@ -36,7 +36,6 @@ LivreH* recherche_numH(BiblioH* bib, int n){
                 return liste_courante;
             }
             liste_courante = liste_courante->suivant;
-            printf("passage\n");
         }
     }
     return NULL;
