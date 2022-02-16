@@ -1,0 +1,5 @@
+set terminal postscript portrait
+set output "comparaison_struct_recherche_pls.ps"
+set size 0.7, 0.7
+plot "Comparaison_Auteur_Present.txt" using 1:2 title "Liste Chainée1" with lines
+plot "Comparaison_Auteur_Present.txt" using 1:3 title "Table de Hachge" with lines
