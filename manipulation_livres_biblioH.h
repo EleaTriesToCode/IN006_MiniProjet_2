@@ -4,7 +4,7 @@
 #ifndef MANIP_LIVRE_BIBH
 #define MANIP_LIVRE_BIBH
 
-/*Fonction permettant d'afficher un livre sous le format num : "titre de auteur"*/
+/*Fonction permettant d'afficher un livre sous le format"clef = clef / num : titre de auteur"*/
 void afficher_livreH(LivreH* livre);
 
 /*Fonction permettant d'afficher une bibliothèque, à raison d'un livre par ligne*/

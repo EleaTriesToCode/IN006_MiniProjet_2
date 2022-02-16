@@ -4,6 +4,8 @@
 #include <math.h>
 #include"biblioH.h"
 
+
+/*Fonction retournant la clef associée à l'auteur en faisant la somme des valeurs ASCII de chaque lettre*/
 int fonctionClef(char* auteur){
     int res = 0;
     int i = 0;
@@ -14,6 +16,7 @@ int fonctionClef(char* auteur){
     return res;
 }
 
+/*Fonction permettant de créer un livre pour la table de hachage*/
 LivreH* creer_livreH(int num,char* titre,char* auteur){
 
     LivreH* res = (LivreH*) malloc(sizeof(LivreH));
@@ -26,12 +29,14 @@ LivreH* creer_livreH(int num,char* titre,char* auteur){
     return res;
 }
 
+/*Fonction libérant l'espace mémoire alloué à l*/
 void liberer_livreH(LivreH* l){
     free(l->titre);
     free(l->auteur);
     free(l);
 }
 
+/*Fonction créant une bibliothèque avec une table de taille m*/
 BiblioH* creer_biblioH(int m){
     BiblioH* res = (BiblioH*) malloc(sizeof(BiblioH));
     res->nE = 0;
@@ -43,6 +48,8 @@ BiblioH* creer_biblioH(int m){
     return res;
 }
 
+
+/*Fonction permettant de libérer la mémoire occupée par une bibliothèque.*/
 void liberer_biblioH(BiblioH* b){
     LivreH** tableauH = b->T;
     LivreH* liste_courante;
@@ -59,12 +66,14 @@ void liberer_biblioH(BiblioH* b){
     free(b);
 }
 
+/*Fonction permettant d'obtenir la clé hachée d'un livre à partir de sa clé et de la taille m de la table*/
 int fonctionHachage(int clef, int m){
     float a = (sqrt(5)-1)/2;
     float ka = clef*a;
     return floor(m*(ka-floor(ka)));
 }
 
+/*Fonction permettant d'ajouter un livre à la bibliothèque*/
 void insererH(BiblioH* b, int num, char* titre, char* auteur){
     LivreH* livre = creer_livreH(num,titre,auteur);
 

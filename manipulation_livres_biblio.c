@@ -5,14 +5,13 @@
 #include"biblioLC.h"
 
 
-/*D l’affichage d’un livre.*/
 
+/*Fonction permettant d'afficher un livre sous le format num : "titre de auteur"*/
 void afficher_livre(Livre* livre){
     printf("%d : %s de %s\n",livre->num,livre->titre,livre->auteur);
 }
 
-/*E l’affichage d’une bibliothèque.*/
-
+/*Fonction permettant d'afficher une bibliothèque, à raison d'un livre par ligne*/
 void afficher_biblio(Biblio* bib){
     Livre* livre_courant = bib->L;
     while (livre_courant){
@@ -22,8 +21,8 @@ void afficher_biblio(Biblio* bib){
     }
 }
 
-/*D la recherche d’un ouvrage par son numéro.*/
 
+/*Fonction retournant le premier livre avec le numéro num dans la bibliothèque bib, NULL s'il n'est pas présent*/
 Livre* recherche_num(Biblio*bib, int n){
     Livre* l_courant = bib->L;
 
@@ -33,8 +32,7 @@ Livre* recherche_num(Biblio*bib, int n){
     return l_courant;
 }
 
-/*E la recherche d’un ouvrage par son titre.*/
-
+/*Fonction retournant le premier livre avec le titre titre dans la bibliothèque bib, NULL s'il n'est pas présent*/
 Livre* recherche_titre(Biblio* bib, char* titre){
     Livre* livre_courant = bib->L;
     while ( (livre_courant) && (strcmp(livre_courant->titre,titre) != 0)){
@@ -43,8 +41,9 @@ Livre* recherche_titre(Biblio* bib, char* titre){
     return livre_courant;
 }
 
-/*D la recherche de tous les livres d’un même auteur (retourne une bibliothèque).*/
 
+/*Fonction recherchant tous les livres d'un même auteur dans bib et les retournant 
+sous la forme d'une bibliothèque (livres dupliqués)*/
 Biblio* recherche_auteur(Biblio* bib,char* auteur){
     Biblio* bib_auteur = creer_biblio();
     Livre* l_courant = bib->L;
@@ -58,8 +57,7 @@ Biblio* recherche_auteur(Biblio* bib,char* auteur){
     return bib_auteur; 
 }
 
-/*E la suppression d’un ouvrage (à partir de son numéro, son auteur et son titre).*/
-
+/*Fonction supprimant un livre de numéro num, titre titre et auteur auteur d'une bibliothèque bib*/
 void supprimer_livre(Biblio* bib, int num, char* auteur, char* titre){
     Livre* l_courant;
     Livre* l_prec;
@@ -87,9 +85,7 @@ void supprimer_livre(Biblio* bib, int num, char* auteur, char* titre){
     }
 }
 
-/*D la fusion de deux bibliothèques en ajoutant la deuxième bibliothèque à la première, et en
-supprimant la deuxième.*/
-
+/*Fonction faisant la fusion de deux Biblio dans bib1 (modifiée par effet de bord) et libérant bib2*/
 void fusion_bib(Biblio* bib1, Biblio* bib2){
     Livre* l_courant = bib1->L;
     while(l_courant->suiv){
@@ -100,15 +96,12 @@ void fusion_bib(Biblio* bib1, Biblio* bib2){
     free(bib2);
 }
 
-/*E + D ? la recherche de tous les ouvrages avec plusieurs exemplaires. Deux ouvrages sont identiques s’ils
-ont le même auteur et le même titre (seul le numéro change). Cette fonction devra renvoyer
-une liste comprenant tous les exemplaires de ces ouvrages, avec une complexité-temps pire cas
-en O(n 2 ) où n est la taille de la bibliothèque.*/
-
+/*Fonction retournant si l2 est un doublon de l1 (sert de manière annexe dans recherche_pls_exemplaires)*/
 int est_doublon(Livre* l1, Livre*l2){
     return ((strcmp(l1->auteur,l2->auteur)==0)&&(strcmp(l1->titre,l2->titre)==0)&&(l1->num != l2->num));
 }
 
+/*Fonction donnant une liste des livres présents en plusieurs exemplaires dans la bibliothèque bib*/
 Livre* recherche_pls_exemplaires(Biblio* bib){
     Livre* res = NULL;
     Livre* nouvelle_tete;

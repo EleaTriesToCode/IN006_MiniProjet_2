@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include "biblioLC.h"
 
-
+/*Fonction permettant de charger n entrées à partir du fichier d'adresse nomfic dans une bibliothèque et la retournant*/
 Biblio* charger_n_entrees(char* nomfic, int n){
     if (n ==0){
         printf("On ne peut pas charger 0 entrées !\n");
@@ -44,7 +44,7 @@ Biblio* charger_n_entrees(char* nomfic, int n){
 
 }
 
-
+/*Fonction permettant d'enregistrer une bibliothèque b dans un fichier d'adresse nomfic*/
 void enregistrer_biblio(Biblio *b, char* nomfic){
 	FILE* fichier = fopen(nomfic,"w");
 	if (fichier == NULL){

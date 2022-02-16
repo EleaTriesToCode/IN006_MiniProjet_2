@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include "biblioH.h"
 
+
+/*Fonction permettant de charger n entrées à partir d'un fichier nommé nomfic*/
 BiblioH* charger_n_entreesH(char* nomfic, int n, int m){
     if (n ==0){
         printf("On ne peut pas charger 0 entrées !\n");
@@ -43,7 +45,7 @@ BiblioH* charger_n_entreesH(char* nomfic, int n, int m){
 }
 
 
-
+/*Fonction permettant de passer d'une bibliothèque à un fichier nummé nomfic (enregistrer la bibliothèque)*/
 void enregistrer_biblioH(BiblioH *bH, char* nomfic){
 	FILE* fichier = fopen(nomfic,"w");
 	if (fichier == NULL){

@@ -4,6 +4,8 @@
 #include <string.h>
 #include "biblioLC.h"
 
+
+/*Fonction permettant de créer un livre à l'aide de son numéro, d'un titre, et d'un auteur et retourne un pointeur sur la structure*/
 Livre* creer_livre(int num, char* titre, char* auteur){
 	Livre* nouveau = (Livre*)(malloc(sizeof(Livre)));
 	if (nouveau == NULL){
@@ -17,7 +19,7 @@ Livre* creer_livre(int num, char* titre, char* auteur){
 	return nouveau;
 }
 
-
+/*Fonction permettant de libérer la place allouée en mémoire au Livre l*/
 void liberer_livre(Livre* l){
 	free(l->titre);
 	free(l->auteur);
@@ -25,7 +27,7 @@ void liberer_livre(Livre* l){
 }
 
 
-
+/*Créé une bibliothèque en initialisant son champ livre à null*/
 Biblio* creer_biblio(){
 	Biblio* nouvelle_biblio = (Biblio*)(malloc(sizeof(Biblio)));
 	if (nouvelle_biblio == NULL){
@@ -36,6 +38,7 @@ Biblio* creer_biblio(){
 	return nouvelle_biblio;
 }
 
+/*Libère la Biblio b allouée*/
 void liberer_biblio(Biblio* b){
 	Livre* livre_courant = b->L;
 	Livre* tmp;
@@ -47,12 +50,14 @@ void liberer_biblio(Biblio* b){
 	free(b);
 }
 
+/*Fonction permettant d'insérer un livre caractérisé par son numéro, son titre et son auteur en tête d'une Biblio b*/
 void inserer_en_tete(Biblio* b, int num, char* titre, char* auteur){
 	Livre* nouveau = creer_livre(num,titre,auteur);
 	nouveau->suiv = b->L;
 	b->L = nouveau;
 }
 
+/*Fonction permettant de dupliquer le livre passé en paramètre*/
 Livre* dupliquer (Livre* l){
 	char* titre = strdup(l->titre);
     char* auteur = strdup(l->auteur);
