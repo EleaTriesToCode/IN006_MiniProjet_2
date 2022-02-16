@@ -34,17 +34,18 @@ void menu(){
 
 
 int main(){
-    /*Choix du test à réaliser*/
-    char entree[256];
-    menu();
+	/*Choix du test à réaliser*/
+	char entree[256];
+	menu();
 	fgets(entree, 10,stdin);
 	int rep = atoi(entree);
 
-	/*Initialisation des bibliothèques où chercher*/
+    /*Initialisation des bibliothèques où chercher*/
 	Biblio* bibLC;
 	BiblioH* bibH;
 
-    FILE* fichier_bib = fopen("GdeBiblio.txt","r");
+    /*Ouverture du fichier base de données*/
+	FILE* fichier_bib = fopen("GdeBiblio.txt","r");
 
     /*Variables pour le temps*/
 	clock_t temps_initial;
