@@ -164,7 +164,6 @@ LivreH* recherche_pls_exemplairesH(BiblioH* bib){
         doublon_potentiel = courant;            //On peut dès le courant car son numéro lui étant identique, il ne sera pas compté comme doublon
         while(doublon_potentiel){
             if(est_doublonH(courant,doublon_potentiel)){
-                printf("passage\n");
                 ajout = creer_livreH(doublon_potentiel->num,doublon_potentiel->titre,doublon_potentiel->auteur);
                 ajout->suivant = res;
                 res = ajout;
