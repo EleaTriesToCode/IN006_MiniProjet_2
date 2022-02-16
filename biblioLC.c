@@ -39,11 +39,12 @@ Biblio* creer_biblio(){
 void liberer_biblio(Biblio* b){
 	Livre* livre_courant = b->L;
 	Livre* tmp;
-	while (livre_courant->suiv){
+	while (livre_courant){
 		tmp = livre_courant->suiv;
 		liberer_livre(livre_courant);
 		livre_courant = tmp;
 	}
+	free(b);
 }
 
 void inserer_en_tete(Biblio* b, int num, char* titre, char* auteur){
@@ -53,7 +54,7 @@ void inserer_en_tete(Biblio* b, int num, char* titre, char* auteur){
 }
 
 Livre* dupliquer (Livre* l){
-	char* titre = strdup(l->auteur);
+	char* titre = strdup(l->titre);
     char* auteur = strdup(l->auteur);
     Livre* l_copie = (Livre*)malloc(sizeof(Livre));
 	l_copie->auteur = auteur;
