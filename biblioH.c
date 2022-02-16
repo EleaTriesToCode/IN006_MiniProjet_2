@@ -67,9 +67,11 @@ int fonctionHachage(int clef, int m){
 
 void insererH(BiblioH* b, int num, char* titre, char* auteur){
     LivreH* livre = creer_livreH(num,titre,auteur);
+
     int pos = fonctionHachage(livre->clef, b->m);
     LivreH* liste_clefH = (b->T)[pos];
     livre->suivant = liste_clefH;
     (b->T)[pos] = livre;
+    b->nE++;
 }
 
