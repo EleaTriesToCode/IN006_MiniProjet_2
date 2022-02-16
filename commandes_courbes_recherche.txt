@@ -1,0 +1,35 @@
+set terminal postscript portrait
+set output "comparaison_recherche_Auteur_Present.ps"
+set size 0.7, 0.7
+plot "Comparaison_Auteur_Present.txt" using 1:2 title "Algo1" with lines
+replot "Comparaison_Auteur_Present.txt" using 1:3 title "Algo2" with lines
+
+set terminal postscript portrait
+set output "comparaison_recherche_Titre_Present.ps"
+set size 0.7, 0.7
+plot "Comparaison_Titre_Present.txt" using 1:2 title "Algo1" with lines
+replot "Comparaison_Titre_Present.txt" using 1:3 title "Algo2" with lines
+
+set terminal postscript portrait
+set output "comparaison_recherche_Numero_Present.ps"
+set size 0.7, 0.7
+plot "Comparaison_Numero_Present.txt" using 1:2 title "Algo1" with lines
+replot "Comparaison_Numero_Present.txt" using 1:3 title "Algo2" with lines
+
+set terminal postscript portrait
+set output "comparaison_recherche_Auteur_Absent.ps"
+set size 0.7, 0.7
+plot "Comparaison_Auteur_Absent.txt" using 1:2 title "Algo1" with lines
+replot "Comparaison_Auteur_Absent.txt" using 1:3 title "Algo2" with lines
+
+set terminal postscript portrait
+set output "comparaison_recherche_Titre_Absent.ps"
+set size 0.7, 0.7
+plot "Comparaison_Titre_Absent.txt" using 1:2 title "Algo1" with lines
+replot "Comparaison_Titre_Absent.txt" using 1:3 title "Algo2" with lines
+
+set terminal postscript portrait
+set output "comparaison_recherche_Numero_Absent.ps"
+set size 0.7, 0.7
+plot "Comparaison_Numero_Absent.txt" using 1:2 title "Algo1" with lines
+replot "Comparaison_Numero_Absent.txt" using 1:3 title "Algo2" with lines

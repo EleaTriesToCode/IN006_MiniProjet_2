@@ -1,0 +1,28 @@
+set terminal postscript portrait
+set output "comparaison_taille_hachage_Auteur_Present.ps"
+set size 0.7, 0.7
+plot "Comparaison_Table_Auteur_Present.txt" using 1:2 title "" with lines
+
+set terminal postscript portrait
+set output "Comparaison_taille_hachage_Titre_Present.ps"
+set size 0.7, 0.7
+plot "Comparaison_Table_Titre_Present.txt" using 1:2 title "" with lines
+
+set terminal postscript portrait
+set output "Comparaison_taille_hachage_Numero_Present.ps"
+set size 0.7, 0.7
+plot "Comparaison_Table_Numero_Present.txt" using 1:2 title "" with lines
+set terminal postscript portrait
+set output "Comparaison_taille_hachage_Auteur_Absent.ps"
+set size 0.7, 0.7
+plot "Comparaison_Table_Auteur_Absent.txt" using 1:2 title "" with lines
+
+set terminal postscript portrait
+set output "Comparaison_taille_hachage_Titre_Absent.ps"
+set size 0.7, 0.7
+plot "Comparaison_Table_Titre_Absent.txt" using 1:2 title "" with lines
+
+set terminal postscript portrait
+set output "Comparaison_taille_hachage_Numero_Absent.ps"
+set size 0.7, 0.7
+plot "Comparaison_Table_Numero_Absent.txt" using 1:2 title "" with lines
