@@ -1,17 +1,13 @@
-all : main mainH comparaison_rec_num
+all : main mainH comparaison_recherche
 
 
 #~~~~~~~~~~~~~~~~~
 #3.1
-comparaison_rec_num :comparaison_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
-	gcc -o comparaison_rec_num comparaison_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o -lm
+comparaison_recherche :comparaison_recherche.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
+	gcc -o comparaison_recherche comparaison_recherche.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o -lm
 
-comparaison_rec_num.o : comparaison_rec_num.c biblioLC.h entreeSortieLC.h manipulation_livres_biblio.h biblioH.h entreeSortieH.h manipulation_livres_biblioH.h
-	gcc -c comparaison_rec_num.c
-
-
-#~~~~~~~~~~~~~~~~~~
-#Brouillon pour le 3.1
+comparaison_recherche.o : comparaison_recherche.c biblioLC.h entreeSortieLC.h manipulation_livres_biblio.h biblioH.h entreeSortieH.h manipulation_livres_biblioH.h
+	gcc -c comparaison_recherche.
 
 #~~~~~~~~~~~~~~~~~~
 #Main avec les listes chainées
