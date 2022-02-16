@@ -106,7 +106,7 @@ int main(int argc, char** argv){
 					if (b){
 						printf("Livres de l'auteur recherché :\n");
 						afficher_biblioH(b);
-						/*on peut la libérer direct!!*/
+						/*on peut la libérer directement*/
 						liberer_biblioH(b);
 					}else{
 						printf("Auteur introuvable.\n");
@@ -148,11 +148,11 @@ int main(int argc, char** argv){
 			printf("Recherche des livres présents en plusieurs exemplaires :\n");
 			BiblioH* res = creer_biblioH(M);
 			(res->T)[0] = recherche_pls_exemplairesH(biblio);
-			if (res->T){
+			if ((res->T)[0]){
 				afficher_biblioH(res);
 				liberer_biblioH(res);
 			}else{
-				printf("Aucun doublon présent.");
+				printf("Aucun doublon présent.\n");
 			}
 			break;					
 		}	

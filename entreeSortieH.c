@@ -3,6 +3,10 @@
 #include "biblioH.h"
 
 BiblioH* charger_n_entreesH(char* nomfic, int n, int m){
+    if (n ==0){
+        printf("On ne peut pas charger 0 entrées !\n");
+        return NULL;
+    }
 	FILE* f = fopen(nomfic,"r");
 
     if (f == NULL){

@@ -1,11 +1,20 @@
-all : main mainH comparaison_LC_Hachage_rec_num 
+all : main mainH comparaison_rec_num
 
-comparaison_LC_Hachage_rec_num : comparaison_LC_Hachage_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
-	gcc -o comparaison_LC_Hachage_rec_num comparaison_LC_Hachage_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o -lm
 
-comparaison_LC_Hachage_rec_num.o : comparaison_LC_Hachage_rec_num.c biblioLC.h entreeSortieLC.h manipulation_livres_biblio.h biblioH.h entreeSortieH.h manipulation_livres_biblioH.h
-	gcc -c comparaison_LC_Hachage_rec_num.c
+#~~~~~~~~~~~~~~~~~
+#3.1
+comparaison_rec_num :comparaison_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
+	gcc -o comparaison_rec_num comparaison_rec_num.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o -lm
 
+comparaison_rec_num.o : comparaison_rec_num.c biblioLC.h entreeSortieLC.h manipulation_livres_biblio.h biblioH.h entreeSortieH.h manipulation_livres_biblioH.h
+	gcc -c comparaison_rec_num.c
+
+
+#~~~~~~~~~~~~~~~~~~
+#Brouillon pour le 3.1
+
+#~~~~~~~~~~~~~~~~~~
+#Main avec les listes chainées
 main : main.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o
 	gcc -o main main.o biblioLC.o entreeSortieLC.o manipulation_livres_biblio.o
 
@@ -22,6 +31,8 @@ manipulation_livres_biblio.o : biblioLC.c biblioLC.h manipulation_livres_biblio.
 	gcc -c manipulation_livres_biblio.c
 
 
+#~~~~~~~~~~~~~~~~~~~
+#Main avec les tables de hachage
 mainH : mainH.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o
 	gcc -o mainH mainH.o biblioH.o entreeSortieH.o manipulation_livres_biblioH.o -lm
 

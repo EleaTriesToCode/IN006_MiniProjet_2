@@ -48,12 +48,10 @@ void liberer_biblioH(BiblioH* b){
     LivreH* liste_courante;
     LivreH* tmp;
     for (int i = 0; i < b->m; i++){
-        printf("passage\n");
         liste_courante = tableauH[i];
         while (liste_courante){
             tmp = liste_courante;
             liste_courante = liste_courante->suivant;
-            printf("On s'apprête à libérer un livre\n");
             liberer_livreH(tmp);
         }
     }

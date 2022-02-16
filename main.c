@@ -119,7 +119,7 @@ int main(int argc, char** argv){
 			printf ("Saisissez le numéro, le titre et l'auteur de l'ouvrage que vous voulez supprimer :\n");
 			if (fgets(entree,256,stdin)) {
 				if (sscanf(entree, "%d %s %s\n",&num, titre, auteur) == 3){
-					supprimer_livre(&biblio, num, auteur, titre);
+					supprimer_livre(biblio, num, auteur, titre);
 					printf ("Suppression faite\n");
 				} else {
 				printf ("Erreur formatage\n");

@@ -21,7 +21,7 @@ sous la forme d'une bibliothèque (livres dupliqués)*/
 Biblio* recherche_auteur(Biblio* bib,char* auteur);
 
 /*Fonction supprimant un livre de numéro num, titre titre et auteur auteur d'une bibliothèque bib*/
-void supprimer_livre(Biblio** bib, int num, char* auteur, char* titre);
+void supprimer_livre(Biblio* bib, int num, char* auteur, char* titre);
 
 /*Fonction faisant la fusion de deux Biblio dans bib1 (modifiée par effet de bord) et libérant bib2*/
 void fusion_bib(Biblio* bib1, Biblio* bib2);

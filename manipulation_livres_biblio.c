@@ -50,7 +50,7 @@ Biblio* recherche_auteur(Biblio* bib,char* auteur){
     Livre* l_courant = bib->L;
     Livre* l_auteur;
     while (l_courant){
-        if(strcmp(l_courant->auteur,auteur)){
+        if((strcmp(l_courant->auteur,auteur))==0){
             inserer_en_tete(bib_auteur,l_courant->num,l_courant->titre,l_courant->auteur);
         }
         l_courant = l_courant->suiv;
@@ -60,16 +60,19 @@ Biblio* recherche_auteur(Biblio* bib,char* auteur){
 
 /*E la suppression d’un ouvrage (à partir de son numéro, son auteur et son titre).*/
 
-void supprimer_livre(Biblio** bib, int num, char* auteur, char* titre){
+void supprimer_livre(Biblio* bib, int num, char* auteur, char* titre){
     Livre* l_courant;
     Livre* l_prec;
-    if ((*bib != NULL) && ((*bib)->L != NULL)){
-        l_courant = (*bib)->L;
+    if ((bib != NULL) && (bib->L != NULL)){
+        l_courant = bib->L;
+        /*On vérifie la tête*/
         if ( (l_courant->num == num) && (strcmp(l_courant->titre,titre)==0) && (strcmp(l_courant->auteur,auteur)==0) ){
             Livre* tmp = l_courant->suiv;
             liberer_livre(l_courant);
-            l_courant = tmp;
-        }else{
+            bib->L = tmp;
+        }
+        else{
+
             l_prec = l_courant;
             l_courant = l_courant->suiv;
             while ((l_courant) && !((l_courant->num == num) && (strcmp(l_courant->titre,titre)==0) && (strcmp(l_courant->auteur,auteur)==0) )){
@@ -93,7 +96,7 @@ void fusion_bib(Biblio* bib1, Biblio* bib2){
         l_courant = l_courant->suiv;
     }
     l_courant->suiv = bib2->L;
-    bib2->L = NULL;             //Oulah...
+    bib2->L = NULL;             
     free(bib2);
 }
 

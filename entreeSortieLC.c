@@ -4,6 +4,10 @@
 
 
 Biblio* charger_n_entrees(char* nomfic, int n){
+    if (n ==0){
+        printf("On ne peut pas charger 0 entrées !\n");
+        return NULL;
+    }
     FILE* f = fopen(nomfic,"r");
 
     if (f == NULL){

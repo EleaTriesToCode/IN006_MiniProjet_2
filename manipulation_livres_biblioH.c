@@ -88,7 +88,7 @@ void supprimer_livreH(BiblioH* bib, int num, char* auteur, char* titre){
 
     if( (courant->num==num) && (strcmp(courant->auteur,auteur)==0) && (strcmp(courant->titre,titre)==0) ){
         (bib->T)[clef]=courant->suivant;
-        free(courant);
+        liberer_livreH(courant);
     }
     else{
         /*Sinon, on peut passer ce premier élément et rentrer dans notre boucle*/
@@ -99,7 +99,7 @@ void supprimer_livreH(BiblioH* bib, int num, char* auteur, char* titre){
             if((courant->num==num) && (strcmp(courant->auteur,auteur)==0) && (strcmp(courant->titre,titre)==0) ){
                 prec->suivant = courant->suivant;
                 pas_trouve = 0;
-                free(courant);
+                liberer_livreH(courant);
             }
             courant = courant->suivant;
         }
@@ -153,22 +153,29 @@ int est_doublonH(LivreH* l1, LivreH* l2){
 
 LivreH* recherche_pls_exemplairesH(BiblioH* bib){
     int i;
+    int notre_courant_est_doublon;
     LivreH* res = NULL;
     LivreH* courant;
     LivreH* doublon_potentiel;
     LivreH* ajout;
-
     for(i = 0 ; i < bib->m ; i++){
         courant = (bib->T)[i];
-        doublon_potentiel = courant->suivant;
+        notre_courant_est_doublon = 0;
+        doublon_potentiel = courant;            //On peut dès le courant car son numéro lui étant identique, il ne sera pas compté comme doublon
         while(doublon_potentiel){
-
             if(est_doublonH(courant,doublon_potentiel)){
+                printf("passage\n");
                 ajout = creer_livreH(doublon_potentiel->num,doublon_potentiel->titre,doublon_potentiel->auteur);
                 ajout->suivant = res;
                 res = ajout;
+                notre_courant_est_doublon = 1;
             }
             doublon_potentiel = doublon_potentiel -> suivant;
+        }
+        if(notre_courant_est_doublon){      //Si le courant qu'on a trouvé a des doublons, il faut aussi l'ajouter !
+            ajout = creer_livreH(courant->num,courant->titre,courant->auteur);
+            ajout->suivant = res;
+            res = ajout;
         }
     }
     return res;  
