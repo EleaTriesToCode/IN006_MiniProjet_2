@@ -29,7 +29,6 @@ LivreH* creer_livreH(int num,char* titre,char* auteur){
 void liberer_livreH(LivreH* l){
     free(l->titre);
     free(l->auteur);
-    free(l->suivant);
     free(l);
 }
 
@@ -48,14 +47,17 @@ void liberer_biblioH(BiblioH* b){
     LivreH** tableauH = b->T;
     LivreH* liste_courante;
     LivreH* tmp;
-    for (int i = 0; i < b->nE; i++){
+    for (int i = 0; i < b->m; i++){
+        printf("passage\n");
         liste_courante = tableauH[i];
         while (liste_courante){
-            tmp = liste_courante->suivant;
-            liberer_livreH(liste_courante);
-            liste_courante = tmp;
+            tmp = liste_courante;
+            liste_courante = liste_courante->suivant;
+            printf("On s'apprête à libérer un livre\n");
+            liberer_livreH(tmp);
         }
-    } free(tableauH);
+    }
+    free(b->T);
     free(b);
 }
 
