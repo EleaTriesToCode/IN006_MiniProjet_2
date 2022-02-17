@@ -134,6 +134,7 @@ int main(){
             liberer_biblioH(bibH);
 
         }
+        break;
     case 2 :
         for(i = 1 ; i < TAILLE ; i++){
             bibLC = charger_n_entrees("GdeBiblio.txt",i);
@@ -163,6 +164,7 @@ int main(){
             liberer_biblio(bibLC);
             liberer_biblioH(bibH);
         }
+        break;
     case 3 :
         for(i = 1 ; i < TAILLE ; i++){
             bibLC = charger_n_entrees("GdeBiblio.txt",i);
@@ -194,6 +196,7 @@ int main(){
             liberer_biblio(bibLC);
             liberer_biblioH(bibH);
         }
+        break;
     case 4 :
         for(i = 1 ; i < TAILLE ; i++){
             bibLC = charger_n_entrees("GdeBiblio.txt",i);
@@ -224,6 +227,7 @@ int main(){
             liberer_biblio(bibLC);
             liberer_biblioH(bibH);
         }
+        break;
     case 5 :
         for(i = 1 ; i < TAILLE ; i++){
             bibLC = charger_n_entrees("GdeBiblio.txt",i);
@@ -254,6 +258,7 @@ int main(){
             liberer_biblio(bibLC);
             liberer_biblioH(bibH);
         } 
+        break;
     case 6 : 
         for(i = 1 ; i < TAILLE ; i++){
             bibLC = charger_n_entrees("GdeBiblio.txt",i);
@@ -285,6 +290,7 @@ int main(){
             liberer_biblio(bibLC);
             liberer_biblioH(bibH);
         }
+        break;
     default:
         break;
     }

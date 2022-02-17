@@ -112,6 +112,7 @@ int main(){
             fprintf(f_num_p, "%.10f\n", temps_H);
 
         }
+        break;
     case 2 :
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
@@ -130,6 +131,7 @@ int main(){
             fprintf(f_num_a, "%.10f\n", temps_H);
 
         }
+        break;
     case 3 :
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
@@ -148,6 +150,7 @@ int main(){
             fprintf(f_titre_p, "%.10f\n", temps_H);
 
         }
+        break;
     case 4 :
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
@@ -166,6 +169,7 @@ int main(){
             fprintf(f_titre_a, "%.10f\n", temps_H);
 
         }
+        break;
     case 5 :
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
@@ -183,6 +187,7 @@ int main(){
             fprintf(f_auteur_p, "%i\t", m);
             fprintf(f_auteur_p, "%.10f\n", temps_H);
         } 
+        break;
     case 6 : 
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
@@ -201,6 +206,7 @@ int main(){
             fprintf(f_auteur_a, "%.10f\n", temps_H);
 
         }
+        break;
     default:
         break;
     }
