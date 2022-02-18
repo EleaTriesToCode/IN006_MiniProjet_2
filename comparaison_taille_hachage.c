@@ -45,25 +45,25 @@ int main(){
 	clock_t temps_final;
 	double temps_H;
 
-    /*Ouverture des fichiers où stocker les temps de calcul pour le gnuplot*/
+    /*Déclaration des fichiers où stocker les temps de calcul pour le gnuplot*/
 
 	/*Avec numéro, livres présents*/
-	FILE *f_num_p = fopen("Comparaison_Table_Numero_Present.txt", "w");
+	FILE *f_num_p;
 
 	/*Avec titre, livres présents*/
-	FILE *f_titre_p = fopen("Comparaison_Table_Titre_Present.txt", "w");
+	FILE *f_titre_p;
 
 	/*Avec auteur, livres présents*/
-	FILE *f_auteur_p = fopen("Comparaison_Table_Auteur_Present.txt", "w");
+	FILE *f_auteur_p;
 
 	/*Avec numéro, livres absents*/
-	FILE *f_num_a = fopen("Comparaison_Table_Numero_Absent.txt", "w");
+	FILE *f_num_a;
 
 	/*Avec titre, livres absents*/
-	FILE *f_titre_a = fopen("Comparaison_Table_Titre_Absent.txt", "w");
-
+	FILE *f_titre_a;
+	
 	/*Avec auteur, livres absents*/
-	FILE *f_auteur_a = fopen("Comparaison_Table_Auteur_Absent.txt", "w");
+	FILE *f_auteur_a;
 
 
     /*On va prendre une centaine de livres, présents dans la bibliothèque, dans laquelle on va piocher à chaque
@@ -96,6 +96,7 @@ int main(){
         return 0;
     
     case 1 :
+	f_num_p = fopen("Comparaison_Table_Numero_Present.txt", "w");
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
 
@@ -112,8 +113,10 @@ int main(){
             fprintf(f_num_p, "%.10f\n", temps_H);
 
         }
+	fclose(f_num_p);
         break;
     case 2 :
+	f_num_a = fopen("Comparaison_Table_Numero_Absent.txt", "w");
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
 
@@ -131,8 +134,10 @@ int main(){
             fprintf(f_num_a, "%.10f\n", temps_H);
 
         }
+	fclose(f_num_a);
         break;
     case 3 :
+	f_titre_p = fopen("Comparaison_Table_Titre_Present.txt", "w");
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
 
@@ -150,8 +155,11 @@ int main(){
             fprintf(f_titre_p, "%.10f\n", temps_H);
 
         }
+	fclose(f_titre_p);
         break;
     case 4 :
+	f_titre_a = fopen("Comparaison_Table_Titre_Absent.txt", "w");
+
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
 
@@ -169,8 +177,10 @@ int main(){
             fprintf(f_titre_a, "%.10f\n", temps_H);
 
         }
+	fclose(f_titre_a);
         break;
     case 5 :
+	f_auteur_p = fopen("Comparaison_Table_Auteur_Present.txt", "w");
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
 
@@ -187,8 +197,10 @@ int main(){
             fprintf(f_auteur_p, "%i\t", m);
             fprintf(f_auteur_p, "%.10f\n", temps_H);
         } 
+	fclose(f_auteur_p);
         break;
     case 6 : 
+	f_auteur_a = fopen("Comparaison_Table_Auteur_Absent.txt", "w");
         for(m = 1 ; m < M_MAX ; m++){
             bibH = charger_n_entreesH("GdeBiblio.txt",TAILLE,m);
 
@@ -206,6 +218,7 @@ int main(){
             fprintf(f_auteur_a, "%.10f\n", temps_H);
 
         }
+	fclose(f_auteur_a);
         break;
     default:
         break;
@@ -215,11 +228,6 @@ int main(){
     /*Fermeture de tous les fichiers utilisés*/
 
     fclose(fichier_bib);
-    fclose(f_auteur_a);
-    fclose(f_auteur_p);
-    fclose(f_num_a);
-    fclose(f_num_p);
-    fclose(f_titre_a);
-    fclose(f_titre_p);
+    
     
 }
