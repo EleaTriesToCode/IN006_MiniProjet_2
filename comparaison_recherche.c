@@ -302,7 +302,7 @@ int main(){
             liberer_biblio(bibLC);
             liberer_biblioH(bibH);
         }
-	fclose(f_auteur_a.txt);
+	fclose(f_auteur_a);
         break;
     }
 
